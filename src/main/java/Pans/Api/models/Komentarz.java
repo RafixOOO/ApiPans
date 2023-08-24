@@ -31,6 +31,9 @@ public class Komentarz {
     @JoinColumn(name = "id_person", nullable = false)
     private Person idPerson;
 
+    @Column(name = "id_kom")
+    private Integer idKom;
+
     public Integer getId() {
         return id;
     }
@@ -69,6 +72,14 @@ public class Komentarz {
 
     public void setIdPerson(Person idPerson) {
         this.idPerson = idPerson;
+    }
+
+    public Integer getIdKom() {
+        return idKom;
+    }
+
+    public void setIdKom(Integer idKom) {
+        this.idKom = idKom;
     }
 
 }

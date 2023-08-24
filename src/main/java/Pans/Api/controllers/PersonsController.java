@@ -17,9 +17,9 @@ public class PersonsController {
 
     @Autowired
     private PersonRepository personRepository;
-    @GetMapping("/Persons/ByNameSurname/{imie}/{nazwisko}")
-    public List<Person> allPersons(@PathVariable(value = "imie") String imie, @PathVariable(value = "nazwisko") String nazwisko){
-        return this.personRepository.findByImieAndNazwisko(imie,nazwisko);
+    @GetMapping("/Persons/All")
+    public List<Person> allPersons(){
+        return this.personRepository.findAll();
     }
 
     @PostMapping("/Persons/Add")
