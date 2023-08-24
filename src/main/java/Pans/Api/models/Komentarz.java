@@ -31,8 +31,9 @@ public class Komentarz {
     @JoinColumn(name = "id_person", nullable = false)
     private Person idPerson;
 
-    @Column(name = "id_kom")
-    private Integer idKom;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_kom")
+    private Komentarz idKom;
 
     public Integer getId() {
         return id;
@@ -74,11 +75,11 @@ public class Komentarz {
         this.idPerson = idPerson;
     }
 
-    public Integer getIdKom() {
+    public Komentarz getIdKom() {
         return idKom;
     }
 
-    public void setIdKom(Integer idKom) {
+    public void setIdKom(Komentarz idKom) {
         this.idKom = idKom;
     }
 
