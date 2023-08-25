@@ -8,8 +8,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface EventRepository extends JpaRepository<Event, Integer> {
+    List<Event> findByStatus(Boolean status);
+
+    List<Event> findByIdKolo(Kolo idKolo);
+
 
 
 

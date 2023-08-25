@@ -14,25 +14,25 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/Kalendarz")
 public class KalendarzCotroller {
 
     @Autowired
     private KalendarzRepository kalendarzRepository;
 
-    @GetMapping("/Kalendarz/{person}")
+    @GetMapping("/{person}")
     public List<Kalendarz> allKalendarz(@PathVariable(value = "person") Person person){
 
             return this.kalendarzRepository.findByIdPerson(person);
 
     }
 
-    @PostMapping("/Kalendarz/Add")
+    @PostMapping("/Add")
     public Kalendarz createKalendarz(@Valid @RequestBody Kalendarz kalendarz) {
         return kalendarzRepository.save(kalendarz);
     }
 
-    @DeleteMapping("/Kalendarz/Delete/{id}")
+    @DeleteMapping("/Delete/{id}")
     public Map<String, Boolean> deleteKalendarz(@PathVariable(value = "id") Integer kalendarztId)
             throws ResourceNotFoundException {
         Kalendarz kalendarz = kalendarzRepository.findById(kalendarztId)

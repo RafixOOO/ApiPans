@@ -19,6 +19,10 @@ public class Person {
     @Column(name = "nazwisko", nullable = false, length = Integer.MAX_VALUE)
     private String nazwisko;
 
+    @NotNull
+    @Column(name = "emailconfirm", nullable = false)
+    private Integer emailconfirm;
+
     public Integer getId() {
         return id;
     }
@@ -41,6 +45,14 @@ public class Person {
 
     public void setNazwisko(String nazwisko) {
         this.nazwisko = nazwisko;
+    }
+
+    public Integer getEmailconfirm() {
+        return emailconfirm;
+    }
+
+    public void setEmailconfirm(Integer emailconfirm) {
+        this.emailconfirm = emailconfirm;
     }
 
 }

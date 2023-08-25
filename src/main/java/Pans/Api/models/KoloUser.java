@@ -33,6 +33,10 @@ public class KoloUser {
     @JoinColumn(name = "user_id_user", nullable = false)
     private User userIdUser;
 
+    @NotNull
+    @Column(name = "chat_writer", nullable = false)
+    private Boolean chatWriter = false;
+
     public Integer getId() {
         return id;
     }
@@ -79,6 +83,14 @@ public class KoloUser {
 
     public void setUserIdUser(User userIdUser) {
         this.userIdUser = userIdUser;
+    }
+
+    public Boolean getChatWriter() {
+        return chatWriter;
+    }
+
+    public void setChatWriter(Boolean chatWriter) {
+        this.chatWriter = chatWriter;
     }
 
 }
