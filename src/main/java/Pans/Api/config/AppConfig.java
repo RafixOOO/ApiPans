@@ -17,12 +17,29 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 public class AppConfig {
 
+    private final UserRepository userRepository;
+
+    @Autowired
+    public AppConfig(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Bean
-    public UserDetailsService userDetailService(){
-        UserDetails user = User.builder().username("admin").password(passwordEncoder().encode("sa")).roles().build();
+    public UserDetailsService userDetailService() {
+        return username -> {
+            Pans.Api.models.User userEntity = userRepository.findByEmail(username);
+            if (userEntity == null) {
+                throw new UsernameNotFoundException("User not found with username: " + username);
+            }
 
-        return new InMemoryUserDetailsManager(user);
+            UserDetails user = User.builder()
+                    .username(userEntity.getEmail())
+                    .password(userEntity.getPassword())
+                    .roles() // Dodaj role użytkownika
+                    .build();
 
+            return user;
+        };
     }
 
     @Bean
