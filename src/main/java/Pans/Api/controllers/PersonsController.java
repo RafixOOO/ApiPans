@@ -5,6 +5,8 @@ import Pans.Api.models.Event;
 import Pans.Api.models.Person;
 import Pans.Api.repository.PersonRepository;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,7 @@ import java.util.Map;
 @RequestMapping("/api/Persons")
 public class PersonsController {
 
+    Logger logger = LoggerFactory.getLogger(PersonsController.class);
     @Autowired
     private PersonRepository personRepository;
     @GetMapping("/find")

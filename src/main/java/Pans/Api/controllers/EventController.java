@@ -25,7 +25,7 @@ public class EventController {
         return this.eventRepository.findByIdKolo(kolo);
     }
 
-    @GetMapping("/publicAll")
+    @GetMapping("/public/All")
     public List<Event> allEvent(){
         return this.eventRepository.findByStatus(true);
     }
