@@ -1,5 +1,8 @@
 package Pans.Api.controllers;
 
+import Pans.Api.models.Person;
+import Pans.Api.models.User;
+import Pans.Api.repository.UserRepository;
 import Pans.Api.service.JwtRequest;
 import Pans.Api.service.JwtResponse;
 import Pans.Api.security.JwtHelper;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/auth/")
 public class AuthController {
@@ -25,6 +30,9 @@ public class AuthController {
 
     @Autowired
     private AuthenticationManager manager;
+
+    @Autowired
+    private UserRepository userRepository;
 
 
     @Autowired
@@ -46,6 +54,11 @@ public class AuthController {
                 .jwtToken(token)
                 .username(userDetails.getUsername()).build();
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/Check")
+    public User allPersons(@RequestParam(name = "email", required = true) String email){
+        return this.userRepository.findByEmail(email);
     }
 
     private void doAuthenticate(String email, String password) {

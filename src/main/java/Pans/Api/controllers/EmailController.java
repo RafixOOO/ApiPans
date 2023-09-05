@@ -15,7 +15,7 @@ import jakarta.mail.internet.MimeMessage;
 import java.util.Random;
 
 @RestController
-@RequestMapping("/api/email")
+@RequestMapping("/auth/email")
 public class EmailController {
 
     @Autowired
