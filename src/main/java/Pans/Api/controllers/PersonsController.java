@@ -17,8 +17,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/Persons")
 public class PersonsController {
-
-    Logger logger = LoggerFactory.getLogger(PersonsController.class);
     @Autowired
     private PersonRepository personRepository;
     @GetMapping("/find")
