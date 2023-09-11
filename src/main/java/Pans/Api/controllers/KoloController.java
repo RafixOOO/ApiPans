@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/Kolo")
+@CrossOrigin(origins = "http://localhost:3000")
 public class KoloController {
 
     @Autowired
