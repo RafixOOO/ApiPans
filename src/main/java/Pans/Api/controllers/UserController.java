@@ -5,6 +5,7 @@ import Pans.Api.models.Event;
 import Pans.Api.models.KoloUser;
 import Pans.Api.models.Person;
 import Pans.Api.models.User;
+import Pans.Api.repository.PersonRepository;
 import Pans.Api.repository.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,9 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping("/Current")
-    public String getLoggedInUser(Principal principal){
-        return principal.getName();
+    public Person getLoggedInUser(Principal principal){
+        User user = userRepository.findByEmail(principal.getName());
+        return user.getPersons();
     }
 
     @PostMapping("/Add")

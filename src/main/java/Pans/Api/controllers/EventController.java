@@ -25,6 +25,7 @@ public class EventController {
         return this.eventRepository.findByIdKolo(kolo);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/public/All")
     public List<Event> allEvent(){
         return this.eventRepository.findByStatus(true);
