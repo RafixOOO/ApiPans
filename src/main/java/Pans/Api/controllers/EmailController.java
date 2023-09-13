@@ -13,7 +13,6 @@ import java.util.Random;
 
 @RestController
 @RequestMapping("/auth/email")
-@CrossOrigin(origins = "http://localhost:3000")
 public class EmailController {
 
     @Autowired

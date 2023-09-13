@@ -16,7 +16,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/Persons")
-@CrossOrigin(origins = "http://localhost:3000")
 public class PersonsController {
     @Autowired
     private PersonRepository personRepository;
