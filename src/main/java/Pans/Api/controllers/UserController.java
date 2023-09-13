@@ -30,7 +30,13 @@ public class UserController {
 
     @PostMapping("/Add")
     public User createKoloUser(@Valid @RequestBody User user) {
-        return userRepository.save(user);
+        User existingUser=userRepository.findById(user.getId()).orElse(null);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hashedPassword = encoder.encode(user.getPassword());
+        existingUser.setPassword(hashedPassword);
+        existingUser.setEmail(user.getEmail());
+        existingUser.setPersons(user.getPersons());
+        return userRepository.save(existingUser);
     }
 
     @PutMapping("/Edit")
