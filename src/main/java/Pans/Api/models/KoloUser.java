@@ -37,6 +37,29 @@ public class KoloUser {
     @Column(name = "chat_writer", nullable = false)
     private Boolean chatWriter = false;
 
+    @NotNull
+    @Column(name = "confirm", nullable = false)
+    private Boolean confirm = false;
+
+    @Column(name = "badges")
+    private Integer badges;
+
+    public Boolean getConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(Boolean confirm) {
+        this.confirm = confirm;
+    }
+
+    public Integer getBadges() {
+        return badges;
+    }
+
+    public void setBadges(Integer badges) {
+        this.badges = badges;
+    }
+
     public Integer getId() {
         return id;
     }

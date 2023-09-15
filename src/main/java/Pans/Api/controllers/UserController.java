@@ -24,20 +24,9 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping("/Current")
-    public Person getLoggedInUser(Principal principal){
+    public User getLoggedInUser(Principal principal){
         User user = userRepository.findByEmail(principal.getName());
-        return user.getPersons();
-    }
-
-    @PostMapping("/Add")
-    public User createKoloUser(@Valid @RequestBody User user) {
-        User existingUser=userRepository.findById(user.getId()).orElse(null);
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String hashedPassword = encoder.encode(user.getPassword());
-        existingUser.setPassword(hashedPassword);
-        existingUser.setEmail(user.getEmail());
-        existingUser.setPersons(user.getPersons());
-        return userRepository.save(existingUser);
+        return user;
     }
 
     @PutMapping("/Edit")

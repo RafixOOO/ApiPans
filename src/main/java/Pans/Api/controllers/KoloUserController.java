@@ -40,6 +40,8 @@ public class KoloUserController {
         existingKolo.setEventsAdder(kolo.getEventsAdder());
         existingKolo.setManageUser(kolo.getManageUser());
         existingKolo.setChatWriter(kolo.getChatWriter());
+        existingKolo.setBadges((kolo.getBadges()));
+        existingKolo.setConfirm(kolo.getConfirm());
         return koloUserRepository.save(existingKolo);
     }
 }

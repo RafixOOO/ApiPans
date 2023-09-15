@@ -38,6 +38,17 @@ public class Event {
     @JoinColumn(name = "id_kolo", nullable = false)
     private Kolo idKolo;
 
+    @Column(name = "image", length = Integer.MAX_VALUE)
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Integer getId() {
         return id;
     }

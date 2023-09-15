@@ -7,14 +7,8 @@ import jakarta.validation.constraints.NotNull;
 @Table(name = "\"user\"")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_user", nullable = false)
     private Integer id;
-
-    @MapsId
-    @OneToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_user", nullable = false)
-    private Person persons;
 
     @NotNull
     @Column(name = "email", nullable = false, length = Integer.MAX_VALUE)
@@ -30,14 +24,6 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Person getPersons() {
-        return persons;
-    }
-
-    public void setPersons(Person persons) {
-        this.persons = persons;
     }
 
     public String getEmail() {

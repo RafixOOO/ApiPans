@@ -23,6 +23,17 @@ public class Kolo {
     @Column(name = "status", nullable = false)
     private Boolean status = false;
 
+    @Column(name = "image", length = Integer.MAX_VALUE)
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Integer getId() {
         return id;
     }

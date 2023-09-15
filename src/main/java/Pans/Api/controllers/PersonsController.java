@@ -25,11 +25,6 @@ public class PersonsController {
         return this.personRepository.findByImieContainsOrNazwiskoContainsOrImieContainsAndNazwiskoContains(imie, nazwisko,imie,nazwisko);
     }
 
-    @PostMapping("/Add")
-    public Person createPerson(@Valid @RequestBody Person person) {
-        return personRepository.save(person);
-    }
-
     @PutMapping("/Edit")
     public Person updatePerson(@RequestBody Person person){
         Person existingPerson=personRepository.findById(person.getId()).orElse(null);

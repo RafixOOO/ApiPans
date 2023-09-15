@@ -1,11 +1,15 @@
 package Pans.Api.controllers;
 
+import Pans.Api.models.Event;
 import Pans.Api.models.Person;
 import Pans.Api.models.User;
+import Pans.Api.repository.EventRepository;
+import Pans.Api.repository.PersonRepository;
 import Pans.Api.repository.UserRepository;
 import Pans.Api.service.JwtRequest;
 import Pans.Api.service.JwtResponse;
 import Pans.Api.security.JwtHelper;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +18,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import org.slf4j.Logger;
@@ -38,6 +43,12 @@ public class AuthController {
 
     @Autowired
     private JwtHelper helper;
+
+    @Autowired
+    private PersonRepository personRepository;
+
+    @Autowired
+    private EventRepository eventRepository;
 
     private Logger logger = LoggerFactory.getLogger(AuthController.class);
 
@@ -73,6 +84,25 @@ public class AuthController {
             throw new BadCredentialsException(" Invalid Username or Password  !!");
         }
 
+    }
+
+    @PostMapping("/AddUser")
+    public User createKoloUser(@Valid @RequestBody User user) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hashedPassword = encoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
+        user.setEmail(user.getEmail());
+        return userRepository.save(user);
+    }
+
+    @PostMapping("/AddPerson")
+    public Person createPerson(@Valid @RequestBody Person person) {
+        return personRepository.save(person);
+    }
+
+    @GetMapping("/public/All")
+    public List<Event> allEvent(){
+        return this.eventRepository.findByStatus(true);
     }
 
     @ExceptionHandler(BadCredentialsException.class)

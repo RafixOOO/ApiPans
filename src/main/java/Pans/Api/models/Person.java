@@ -23,6 +23,17 @@ public class Person {
     @Column(name = "emailconfirm", nullable = false)
     private Integer emailconfirm;
 
+    @Column(name = "image", length = Integer.MAX_VALUE)
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Integer getId() {
         return id;
     }
