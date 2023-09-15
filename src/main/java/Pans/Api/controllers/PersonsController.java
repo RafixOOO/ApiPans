@@ -22,7 +22,7 @@ public class PersonsController {
     @GetMapping("/find")
     public List<Person> allPersons(@RequestParam(name = "imie", required = false) String imie,
                                    @RequestParam(name = "nazwisko", required = false) String nazwisko){
-        return this.personRepository.findByImieContainsOrNazwiskoContainsOrImieContainsAndNazwiskoContains(imie, nazwisko,imie,nazwisko);
+        return this.personRepository.findByImieContainsAndNazwiskoContainsAndEmailconfirmOrNazwiskoContainsAndEmailconfirmOrImieContainsAndEmailconfirm(imie,nazwisko,1 ,nazwisko,1,imie,1);
     }
 
     @PutMapping("/Edit")

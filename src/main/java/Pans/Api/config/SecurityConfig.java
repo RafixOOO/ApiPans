@@ -48,7 +48,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.addAllowedOrigin("http://localhost:3000"); // Ustaw odpowiednią domenę lub "*", aby zezwolić na wszystkie domeny.
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE","OPTION")); // Ustaw metody HTTP, które chcesz zezwolić (np. GET, POST, PUT, DELETE).
-        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type")); // Ustaw nagłówki, które chcesz zezwolić.
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept")); // Ustaw nagłówki, które chcesz zezwolić.
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
 

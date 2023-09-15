@@ -8,4 +8,6 @@ import java.util.List;
 public interface KoloRepository extends JpaRepository<Kolo, Integer> {
     List<Kolo> findByNazwaContains(String nazwa);
 
+    List<Kolo> findByNazwaContainsAndStatus(String nazwa, Boolean status);
+
 }

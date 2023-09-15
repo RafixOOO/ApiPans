@@ -8,6 +8,9 @@ import java.util.Optional;
 
 public interface PersonRepository extends JpaRepository<Person, Integer> {
     List<Person> findByImieContainsOrNazwiskoContainsOrImieContainsAndNazwiskoContains(String imie, String nazwisko, String imie1, String nazwisko1);
+
+    List<Person> findByImieContainsAndNazwiskoContainsAndEmailconfirmOrNazwiskoContainsAndEmailconfirmOrImieContainsAndEmailconfirm(String imie,String nazwisko,Integer emailconfirm ,String nazwisko1,Integer emailconfirm1, String imie1 , Integer emailconfirm2);
+
     
 
 

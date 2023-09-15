@@ -33,11 +33,4 @@ public class KomentarzController {
         response.put("deleted", Boolean.TRUE);
         return response;
     }
-
-    @PutMapping("/Edit")
-    public Komentarz updateEvenet(@RequestBody Komentarz komentarz){
-        Komentarz existingKomentarz=komentarzRepository.findById(komentarz.getId()).orElse(null);
-        existingKomentarz.setOpis(komentarz.getOpis());
-        return komentarzRepository.save(existingKomentarz);
-    }
 }

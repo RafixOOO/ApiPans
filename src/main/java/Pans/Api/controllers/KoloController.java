@@ -1,14 +1,13 @@
 package Pans.Api.controllers;
 
 import Pans.Api.models.Kolo;
-import Pans.Api.models.Person;
 import Pans.Api.repository.KoloRepository;
-import Pans.Api.repository.KoloUserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Kolo")
@@ -18,8 +17,13 @@ public class KoloController {
     private KoloRepository koloRepository;
 
     @GetMapping("/find")
-    public List<Kolo> allKolo(@RequestParam(name = "nazwa", required = true) String nazwa){
-        return this.koloRepository.findByNazwaContains(nazwa);
+    public Optional<Kolo> allKolo(@RequestParam(name = "id", required = true) Integer id){
+        return this.koloRepository.findById(id);
+    }
+
+    @GetMapping("/findPiece")
+    public List<Kolo> allKolo1(@RequestParam(name = "nazwa", required = true) String nazwa){
+        return this.koloRepository.findByNazwaContainsAndStatus(nazwa,true);
     }
 
     @PostMapping("/Add")
