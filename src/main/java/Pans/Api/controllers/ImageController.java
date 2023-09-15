@@ -35,7 +35,7 @@ public class ImageController {
     @Autowired
     private KoloRepository koloRepository;
 
-    @PostMapping("/PersonImage")
+    @PostMapping(value = "/PersonImage", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public Person updatePerson(@RequestParam Integer id, @RequestParam("file") MultipartFile file) throws IOException {
         Person existingPerson=personRepository.findById(id).orElse(null);
         String filename = imageService.uploadImage(file);
@@ -43,7 +43,7 @@ public class ImageController {
         return personRepository.save(existingPerson);
     }
 
-    @PostMapping("/KoloImage")
+    @PostMapping(value = "/KoloImage", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public Kolo updateUser(@RequestParam Integer id, @RequestParam("file") MultipartFile file) throws IOException {
         Kolo existingPerson=koloRepository.findById(id).orElse(null);
         String filename = imageService.uploadImage(file);
@@ -51,7 +51,7 @@ public class ImageController {
         return koloRepository.save(existingPerson);
     }
 
-    @PostMapping("/EventImage")
+    @PostMapping(value = "/EventImage", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public Event updateEvent(@RequestParam Integer id, @RequestParam("file") MultipartFile file) throws IOException {
         Event existingPerson=eventRepository.findById(id).orElse(null);
         String filename = imageService.uploadImage(file);
