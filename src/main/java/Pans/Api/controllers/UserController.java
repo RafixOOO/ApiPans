@@ -29,15 +29,6 @@ public class UserController {
         return user;
     }
 
-    @PutMapping("/Edit")
-    public User updatePerson(@RequestBody User user){
-        User existingUser=userRepository.findById(user.getId()).orElse(null);
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String hashedPassword = encoder.encode(user.getPassword());
-        existingUser.setPassword(hashedPassword);
-        return userRepository.save(existingUser);
-    }
-
     @DeleteMapping("/Delete/{id}")
     public Map<String, Boolean> deleteEvent(@PathVariable(value = "id") Integer userId)
             throws ResourceNotFoundException {

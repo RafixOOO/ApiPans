@@ -68,9 +68,18 @@ public class AuthController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/Check")
+    @GetMapping("/CheckUser")
     public User allPersons(@RequestParam(name = "email", required = true) String email){
         return this.userRepository.findByEmail(email);
+    }
+
+    @PutMapping("/EditUser")
+    public User updatePerson(@RequestBody User user){
+        User existingUser=userRepository.findById(user.getId()).orElse(null);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hashedPassword = encoder.encode(user.getPassword());
+        existingUser.setPassword(hashedPassword);
+        return userRepository.save(existingUser);
     }
 
     private void doAuthenticate(String email, String password) {
@@ -100,7 +109,7 @@ public class AuthController {
         return personRepository.save(person);
     }
 
-    @GetMapping("/public/All")
+    @GetMapping("/Event/All")
     public List<Event> allEvent(){
         return this.eventRepository.findByStatus(true);
     }
