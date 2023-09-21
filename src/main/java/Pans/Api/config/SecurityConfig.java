@@ -19,6 +19,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Configuration
@@ -34,7 +35,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.csrf(csrf -> csrf.disable())
-                .cors(Customizer.withDefaults())
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth->
                         auth.requestMatchers("/auth/**").permitAll().requestMatchers("/api/**").authenticated().anyRequest().permitAll())
                 .exceptionHandling(ex->ex.authenticationEntryPoint(point))
@@ -46,11 +47,9 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("http://localhost:3000"); // Ustaw odpowiednią domenę lub "*", aby zezwolić na wszystkie domeny.
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE")); // Ustaw metody HTTP, które chcesz zezwolić (np. GET, POST, PUT, DELETE).
-        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept")); // Ustaw nagłówki, które chcesz zezwolić.
-        configuration.addExposedHeader("Access-Control-Allow-Headers");
-        configuration.addExposedHeader("Access-Control-Allow-Methods");
+        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:3000")); // Ustaw odpowiednią domenę lub "*", aby zezwolić na wszystkie domeny.
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTION")); // Ustaw metody HTTP, które chcesz zezwolić (np. GET, POST, PUT, DELETE).
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept")); // Ustaw nagłówki, które chcesz zezwolić.
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
 
