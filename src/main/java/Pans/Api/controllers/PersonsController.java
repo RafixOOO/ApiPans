@@ -30,6 +30,10 @@ public class PersonsController {
         Person existingPerson=personRepository.findById(person.getId()).orElse(null);
         existingPerson.setImie(person.getImie());
         existingPerson.setNazwisko(person.getNazwisko());
+        if(person.getEmailconfirm() == 0){
+            existingPerson.setEmailconfirm(person.getEmailconfirm());
+            existingPerson.setImage(person.getImage());
+        }
         return personRepository.save(existingPerson);
     }
 }
