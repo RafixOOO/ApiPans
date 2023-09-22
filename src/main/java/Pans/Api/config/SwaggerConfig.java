@@ -20,7 +20,7 @@ public class SwaggerConfig {
                 .components(new Components().addSecuritySchemes("Bearer Authentication", createAPIKeyScheme()))
                 .info(new Info().title("EventerAPI")
                         .description("Rest")
-                        .version("1.0").contact(new Contact().name("Rafał Pezda").email("https://github.com/RafixOOO").url("r.pezda@outlook.com")));
+                        .version("1.0").contact(new Contact().name("Rafał Pezda").email("r.pezda@outlook.com").url("https://github.com/RafixOOO")));
     }
 
     private SecurityScheme createAPIKeyScheme() {
