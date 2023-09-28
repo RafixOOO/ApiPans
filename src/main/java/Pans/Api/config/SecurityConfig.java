@@ -48,8 +48,9 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowCredentials(true);
         configuration.setAllowedOrigins(Collections.singletonList("http://localhost:3000")); // Ustaw odpowiednią domenę lub "*", aby zezwolić na wszystkie domeny.
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTION")); // Ustaw metody HTTP, które chcesz zezwolić (np. GET, POST, PUT, DELETE).
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Ustaw metody HTTP, które chcesz zezwolić (np. GET, POST, PUT, DELETE).
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept")); // Ustaw nagłówki, które chcesz zezwolić.
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
