@@ -503,7 +503,7 @@ public class EmailController {
                 "                    <td class=\"content-cell\">\n" +
                 "                      <div class=\"f-fallback\">\n" +
                 "                        <h1>Hi,</h1>\n" +
-                "                        <p>You recently requested to verify your Eventer account. Use the code below to reset it.</p>\n" +
+                "                        <p>You recently requested to verify your Eventer account. Use the code below to verify it.</p>\n" +
                 "                        <!-- Action -->\n" +
                 "                        <table class=\"body-action\" align=\"center\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n" +
                 "                          <tr>\n" +
