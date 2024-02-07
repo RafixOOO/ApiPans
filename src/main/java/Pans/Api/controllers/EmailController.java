@@ -519,7 +519,7 @@ public class EmailController {
                 "                            </td>\n" +
                 "                          </tr>\n" +
                 "                        </table>\n" +
-                "                        <p>If you did not request a password reset, please ignore this email or <a href=\"{http://10.100.100.66:3000/contact}\">contact support</a> if you have questions.</p>\n" +
+                "                        <p>If you did not request a password reset, please ignore this email or <a href=\"http://10.100.100.66:3000/contact\">contact support</a> if you have questions.</p>\n" +
                 "                        <p>Thanks,\n" +
                 "                          <br>The Eventer team</p>\n" +
                 "                        <!-- Sub copy -->\n" +
