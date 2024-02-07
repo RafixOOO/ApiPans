@@ -8658,3 +8658,7 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-210]
 	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5151)
 	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:105)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-02-07 14:26:13 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "SELECT * FROM PERSONS EVENTS [*]KALENDARZ"
+Syntax error in SQL statement "SELECT * FROM PERSONS EVENTS [*]KALENDARZ"; SQL statement:
+SELECT * FROM PERSONS EVENTS KALENDARZ [42000-214]
